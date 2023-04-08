@@ -9,12 +9,11 @@ class Jabatan extends Model
 {
     use HasFactory;
 
-    protected $table = 'kehadiran';
+    protected $table = 'jabatan';
 
     protected $fillable = [
         'user_id',
-        'jam_masuk',
-        'jam_keluar',
-        'status',
+        'nama_jabatan',
+        'tunjangan',
     ];
 }

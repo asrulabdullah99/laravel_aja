@@ -13,8 +13,7 @@ class User_detail extends Model
 
     protected $fillable = [
         'user_id',
-        'jam_masuk',
-        'jam_keluar',
-        'status',
+        'alamat',
+        'no_hp',
     ];
 }
