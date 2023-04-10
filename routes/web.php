@@ -14,9 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('jabatan');
-});
-
-Route::get('/fetchJabatan', function () {
-    return view('jabatan');
+    return view('home');
 });
