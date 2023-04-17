@@ -12,6 +12,7 @@
     <title>Dashboard Admin</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 

@@ -25,4 +25,5 @@ Route::get('/dashboard-admin', function () {
 
 Route::controller(UserController::class)->name('user.')->group(function () {
     Route::get('/user', 'getUser')->name('getUser');
+    Route::get('/tambah', 'tambahForm')->name('tambahForm');
 });

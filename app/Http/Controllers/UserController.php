@@ -11,7 +11,11 @@ class UserController extends Controller
     {
         $dataUser = $user->get();
 
-        return view('viewUser', compact('dataUser'));
+        return view('admin.user.viewUser', compact('dataUser'));
+    }
+    public function tambahForm()
+    {
+        return view('admin.user.tambahForm');
     }
     public function saveUser()
     {
