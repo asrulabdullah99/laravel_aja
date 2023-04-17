@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/dashboard-admin', function () {
+    return view('admin/dashboard_admin');
+});
+
 
 Route::controller(UserController::class)->name('user.')->group(function () {
     Route::get('/user', 'getUser')->name('getUser');
