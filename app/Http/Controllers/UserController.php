@@ -17,8 +17,16 @@ class UserController extends Controller
     {
         return view('admin.user.tambahForm');
     }
-    public function saveUser()
+    public function saveUser(User $user, Request $userRequest)
     {
+        $data = $userRequest->all();
+        $data['password'] = bcrypt($userRequest->password);
+
+        //dd($data);
+
+        $user->create($data);
+
+        return redirect(route('user.getUser'))->with('success', 'Data user berhasil ditambahkan');
     }
     public function deleteUser()
     {
