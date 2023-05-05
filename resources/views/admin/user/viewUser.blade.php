@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Asrul Abdullah">
-    <meta name="generator" content="Hugo 0.111.3">
     <title>Dashboard Admin</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
@@ -275,7 +274,7 @@
                         </button>
                     </div>
                 </div>
-                <div> <a href="/tambah"><button type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
+                <div> <a href="/tambah"><button type="button" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
@@ -295,7 +294,13 @@
                                 <td scope="col">{{ $user->email }}</td>
                                 <td scope="col">{{ $user->password }}</td>
                                 <td>
-                                    <div> <button type="button" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button> | <button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button></div>
+                                    <div> <button type="button" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button> |
+                                        <form onsubmit="return confirm('Data pengguna akan dihapus ?')" action=" {{route('user.deleteUser',$user->id)}}" method="POST" ">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type=" submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

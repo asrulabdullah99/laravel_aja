@@ -27,4 +27,6 @@ Route::controller(UserController::class)->name('user.')->group(function () {
     Route::get('/user', 'getUser')->name('getUser');
     Route::get('/tambah', 'tambahForm')->name('tambahForm');
     Route::post('/simpan', 'saveUser')->name('saveUser');
+    Route::patch('/update', 'updateUser')->name('updateUser');
+    Route::delete('/hapus/{user}', 'deleteUser')->name('deleteUser');
 });
