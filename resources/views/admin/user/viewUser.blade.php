@@ -276,7 +276,7 @@
                 </div>
                 <div> <a href="/tambah"><button type="button" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
                 <div class="table-responsive">
-                    <table class="table table-striped table-sm">
+                    <table class="table table-hover table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
