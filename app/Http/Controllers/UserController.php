@@ -16,6 +16,12 @@ class UserController extends Controller
     {
         return view('admin.user.tambahForm');
     }
+
+    public function editForm(User $user)
+    {
+        return view('admin.user.editForm', compact('user'));
+    }
+
     public function saveUser(User $user, Request $userRequest)
     {
         $data = $userRequest->all();
@@ -28,7 +34,14 @@ class UserController extends Controller
         $user->delete();
         return back()->with(['success' => 'Data berhasil dihapus']);
     }
-    public function updateUser()
+    public function updateUser(User $user, Request $userRequest)
     {
+        $data = $userRequest->all();
+
+        if ($userRequest->password) {
+            $data['password'] = bcrypt($userRequest->password);
+        }
+        $user->update($data);
+        return redirect(route('user.getUser'))->with('success', 'Data user berhasil diubah');
     }
 }

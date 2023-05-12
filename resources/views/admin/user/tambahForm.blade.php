@@ -277,7 +277,7 @@
                 <div>
                     <h4>Form Tambah User</h4>
                 </div>
-                <form action="{{route('user.saveUser')}}" method="GET">
+                <form action="{{route('user.saveUser')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Pengguna</label>

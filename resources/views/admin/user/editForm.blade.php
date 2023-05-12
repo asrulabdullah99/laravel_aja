@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Asrul Abdullah">
+    <meta name="generator" content="Hugo 0.111.3">
     <title>Dashboard Admin</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
@@ -258,7 +259,6 @@
                     </ul>
                 </div>
             </nav>
-
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard User</h1>
@@ -274,40 +274,30 @@
                         </button>
                     </div>
                 </div>
-                <div> <a href="/tambah"><button type="button" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
-                <div class="table-responsive">
-                    <table class="table table-hover table-sm">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($dataUser as $index => $user)
-                            <tr>
-                                <td scope="col">{{ ++$index }}</td>
-                                <td scope="col">{{ $user->name }}</td>
-                                <td scope="col">{{ $user->email }}</td>
-                                <td scope="col">{{ $user->password }}</td>
-                                <td>
-                                    <div>
-                                        <a href="{{route('user.editForm',[$user->id])}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
-                                        | <form onsubmit="return confirm('Data pengguna akan dihapus ?')" action=" {{route('user.deleteUser',$user->id)}}" method="POST" ">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type=" submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div>
+                    <h4>Form Edit User</h4>
                 </div>
+                <form action="{{route('user.updateUser',$user->id)}}" method="POST">
+                    @csrf
+                    @method('patch')
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Pengguna</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" value="{{ old('name') ?? $user->name}}">
+                        <small id="emailHelp" class="form-text text-muted">example : Asrul Abdullah.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Alamat Email</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') ?? $user->email}}">
+                        <small id="emailHelp" class="form-text text-muted">ex. asrul.abdullah@unmuhpnk.ac.id.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{ old('password') ?? $user->password}}">
+                    </div>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
             </main>
         </div>
     </div>
