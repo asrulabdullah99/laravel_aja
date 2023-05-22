@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('kehadiran', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->date('jam_masuk');
-            $table->date('jam_keluar');
+            $table->datetime('jam_masuk');
+            $table->datetime('jam_keluar');
             $table->enum('status', ['A', 'M', 'I', 'S']);
             $table->timestamps();
         });

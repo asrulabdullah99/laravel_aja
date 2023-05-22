@@ -2,42 +2,7 @@
 @section('title')
 Tambah Data
 @endsection
-@section('sidebar')
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
-    <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/admin">
-                    <span data-feather="home" class="align-text-bottom"></span>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">
-                    <span data-feather="users" class="align-text-bottom"></span>
-                    Pengguna
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file" class="align-text-bottom"></span>
-                    Kehadiran
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/jabatan">
-                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Jabatan
-                </a>
-            </li>
-
-
-        </ul>
-
-    </div>
-</nav>
-@endsection
-
+@extends('components.sidebar')
 @section('konten')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard Jabatan</h1>
@@ -75,11 +40,7 @@ Tambah Data
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Tunjangan</label>
-        <div class="input-group mb-3">
-            <input type="number" name="tunjangan" class="form-control" id="exampleInputPassword1" placeholder="Enter tunjangan">
-            <span class="input-group-text">Rp</span>
-            <span class="input-group-text">0.00</span>
-        </div>
+        <input type="number" name="tunjangan" class="form-control" id="exampleInputPassword1" placeholder="Enter tunjangan">
         <small id="emailHelp" class="form-text text-muted">example : 1000</small>
     </div>
     <br>

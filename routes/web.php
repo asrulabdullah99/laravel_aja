@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,4 +41,13 @@ Route::controller(JabatanController::class)->name('jabatan.')->group(function ()
     Route::post('/jabatan/simpan', 'saveJabatan')->name('saveJabatan');
     Route::patch('/jabatan/update/{jabatan}', 'updateJabatan')->name('updateJabatan');
     Route::delete('/jabatan/hapus/{jabatan}', 'deleteJabatan')->name('deleteJabatan');
+});
+
+Route::controller(KehadiranController::class)->name('kehadiran.')->group(function () {
+    Route::get('/kehadiran/view', 'getKehadiran')->name('getKehadiran');
+    Route::get('/kehadiran/tambah', 'tambah')->name('tambah');
+    Route::get('/kehadiran/edit/{kehadiran}', 'edit')->name('edit');
+    Route::post('/kehadiran/simpan', 'saveKehadiran')->name('saveKehadiran');
+    Route::patch('/kehadiran/update/{kehadiran}', 'updateKehadiran')->name('updateKehadiran');
+    Route::delete('/kehadiran/hapus/{kehadiran}', 'deleteKehadiran')->name('deleteKehadiran');
 });

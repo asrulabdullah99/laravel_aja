@@ -17,4 +17,9 @@ class Kehadiran extends Model
         'jam_keluar',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
