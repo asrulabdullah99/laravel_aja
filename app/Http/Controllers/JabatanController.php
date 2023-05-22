@@ -14,7 +14,7 @@ class JabatanController extends Controller
 
         return view('admin.jabatan.viewJabatan', compact('dataJabatan'));
     }
-    public function tambahForm(User $user)
+    public function tambah(User $user)
     {
         $fetchUser = $user->get();
         return view('admin.jabatan.tambahForm', compact('fetchUser'));

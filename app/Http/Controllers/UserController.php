@@ -12,12 +12,12 @@ class UserController extends Controller
         $dataUser = $user->paginate(10);
         return view('admin.user.viewUser', compact('dataUser'));
     }
-    public function tambahForm()
+    public function tambah()
     {
         return view('admin.user.tambahForm');
     }
 
-    public function editForm(User $user)
+    public function edit(User $user)
     {
         return view('admin.user.editForm', compact('user'));
     }

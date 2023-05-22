@@ -1,39 +1,8 @@
 @extends('components.app')
-@section('sidebar')
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
-    <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/admin">
-                    <span data-feather="home" class="align-text-bottom"></span>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/user">
-                    <span data-feather="users" class="align-text-bottom"></span>
-                    Pengguna
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file" class="align-text-bottom"></span>
-                    Kehadiran
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/jabatan">
-                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Jabatan
-                </a>
-            </li>
-
-
-        </ul>
-
-    </div>
-</nav>
+@section('title')
+Dashboard Jabatan
 @endsection
+@extends('components.sidebar')
 
 @section('konten')
 
@@ -51,7 +20,7 @@
         </button>
     </div>
 </div>
-<div> <a href="/tambah"><button type="button" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
+<div> <a href="{{ route('jabatan.tambah') }}"><button type="button" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
 <div class="table-responsive">
     <table class="table table-hover table-sm">
         <thead>
