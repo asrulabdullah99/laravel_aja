@@ -16,4 +16,9 @@ class Jabatan extends Model
         'nama_jabatan',
         'tunjangan',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
