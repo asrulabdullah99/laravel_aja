@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function getUser(User $user)
     {
-        $dataUser = $user->get();
+        $dataUser = $user->paginate(10);
         return view('admin.user.viewUser', compact('dataUser'));
     }
     public function tambahForm()
@@ -25,6 +25,7 @@ class UserController extends Controller
     public function saveUser(User $user, Request $userRequest)
     {
         $data = $userRequest->all();
+        //dd($data);
         $data['password'] = bcrypt($userRequest->password);
         $user->create($data);
         return redirect(route('user.getUser'))->with('success', 'Data user berhasil ditambahkan');

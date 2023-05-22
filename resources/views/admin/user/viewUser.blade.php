@@ -193,23 +193,24 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link active" href="/user">
+                                <span data-feather="users" class="align-text-bottom"></span>
+                                Pengguna
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Kehadiran
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/jabatan">
                                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                                 Jabatan
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/user">
-                                <span data-feather="users" class="align-text-bottom"></span>
-                                Pengguna
-                            </a>
-                        </li>
+
 
                     </ul>
 

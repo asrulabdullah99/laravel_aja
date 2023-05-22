@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,12 @@ Route::controller(UserController::class)->name('user.')->group(function () {
     Route::patch('/update/{user}', 'updateUser')->name('updateUser');
     Route::delete('/hapus/{user}', 'deleteUser')->name('deleteUser');
 });
+
+// Route::controller(JabatanController::class)->name('jabatan.')->group(function () {
+//     Route::get('/jabatan', 'getUser')->name('getUser');
+//     Route::get('/tambah', 'tambahForm')->name('tambahForm');
+//     Route::get('/edit/{user}', 'editForm')->name('editForm');
+//     Route::post('/simpan', 'saveUser')->name('saveUser');
+//     Route::patch('/update/{user}', 'updateUser')->name('updateUser');
+//     Route::delete('/hapus/{user}', 'deleteUser')->name('deleteUser');
+// });
