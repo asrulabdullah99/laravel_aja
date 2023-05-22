@@ -1,4 +1,7 @@
 @extends('components.app')
+@section('title')
+Tambah Data
+@endsection
 @section('sidebar')
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
     <div class="position-sticky pt-3 sidebar-sticky">
@@ -36,7 +39,6 @@
 @endsection
 
 @section('konten')
-
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard Jabatan</h1>
 
@@ -51,39 +53,33 @@
         </button>
     </div>
 </div>
-<div> <a href="/tambah"><button type="button" class="btn btn-outline-primary"><i class="fa fa-plus" aria-hidden="true"></i> Tambah</button></a></div>
-<div class="table-responsive">
-    <table class="table table-hover table-sm">
-        <thead>
-            <tr>
-                <th scope="col">No</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jabatan</th>
-                <th scope="col">Tunjangan (Ribu Rupiah)</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($dataJabatan as $index => $jabatan)
-            <tr>
-                <td scope="col">{{ ++$index }}</td>
-                <td scope="col">{{ $jabatan->user->name }}</td>
-                <td scope="col">{{ $jabatan->nama_jabatan }}</td>
-                <td scope="col">{{ $jabatan->tunjangan }}</td>
-                <td>
-                    <div>
-                        <a href="{{route('jabatan.edit', $jabatan->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
-                        | <form onsubmit="return confirm('Data jabatan akan dihapus ?')" action=" {{route('jabatan.deleteJabatan',$jabatan->id)}}" method="POST" ">
-                        @csrf
-                        @method('DELETE')
-                        <button type=" submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+<div>
+    <h4>Form Tambah Jabatan</h4>
 </div>
-
+<form action="{{route('jabatan.saveJabatan')}}" method="POST">
+    @csrf
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nama Pengguna</label>
+        <select class="form-select" name='user_id' aria-label="Default select example">
+            <option value="">Pilih Nama</option>
+            @foreach($fetchUser as $user)
+            <option value="{{$user->id}}">{{ $user->name }}</option>
+            @endforeach
+        </select>
+        <small id="emailHelp" class="form-text text-muted">example : Asrul Abdullah.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Jabatan</label>
+        <input type="text" name="nama_jabatan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter jabatan">
+        <small id="emailHelp" class="form-text text-muted">example : Kaprodi</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Tunjangan</label>
+        <input type="number" name="tunjangan" class="form-control" id="exampleInputPassword1" placeholder="Enter tunjangan">
+        <small id="emailHelp" class="form-text text-muted">example : 1000</small>
+    </div>
+    <br>
+    <br>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
 @endsection
