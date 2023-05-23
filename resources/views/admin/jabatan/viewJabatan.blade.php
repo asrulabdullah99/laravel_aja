@@ -40,13 +40,16 @@ Dashboard Jabatan
                 <td scope="col">{{ $jabatan->nama_jabatan }}</td>
                 <td scope="col">{{ $jabatan->tunjangan }}</td>
                 <td>
-                    <div>
-                        <a href="{{route('jabatan.edit', $jabatan->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
-                        | <form onsubmit="return confirm('Data jabatan akan dihapus ?')" action=" {{route('jabatan.deleteJabatan',$jabatan->id)}}" method="POST" ">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text border-0">
+                            <a href="{{route('jabatan.edit', $jabatan->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>
+                        </span><span class="input-group-text border-0">
+                            <form onsubmit="return confirm('Data jabatan akan dihapus ?')" action=" {{route('jabatan.deleteJabatan',$jabatan->id)}}" method="POST" ">
                         @csrf
                         @method('DELETE')
                         <button type=" submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</button>
-                        </form>
+                            </form>
+                        </span>
                     </div>
                 </td>
             </tr>
