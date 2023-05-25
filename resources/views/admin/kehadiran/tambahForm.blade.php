@@ -5,7 +5,7 @@ Tambah Data
 @extends('components.sidebar')
 @section('konten')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Dashboard Jabatan</h1>
+    <h1 class="h2">Dashboard Kehadiran</h1>
 
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
@@ -19,9 +19,9 @@ Tambah Data
     </div>
 </div>
 <div>
-    <h4>Form Tambah Jabatan</h4>
+    <h4>Form Tambah Kehadiran</h4>
 </div>
-<form action="{{route('jabatan.saveJabatan')}}" method="POST">
+<form action="{{route('kehadiran.saveKehadiran')}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="exampleInputEmail1">Nama Pengguna</label>
@@ -34,14 +34,25 @@ Tambah Data
         <small id="emailHelp" class="form-text text-muted">example : Asrul Abdullah.</small>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Jabatan</label>
-        <input type="text" name="nama_jabatan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter jabatan">
+        <label for="exampleInputEmail1">Jam Masuk</label>
+        <input type="datetime-local" name="jam_masuk" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ now()->setTimezone('T')->format('Y-m-dTh:m') }}">
         <small id="emailHelp" class="form-text text-muted">example : Kaprodi</small>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Tunjangan</label>
-        <input type="number" name="tunjangan" class="form-control" id="exampleInputPassword1" placeholder="Enter tunjangan">
+        <label for="exampleInputPassword1">Jam Keluar</label>
+        <input type="datetime-local" name="jam_keluar" class="form-control" id="exampleInputPassword1" placeholder="Enter jam keluar">
         <small id="emailHelp" class="form-text text-muted">example : 1000</small>
+    </div>
+    <div class="form-group">
+        @php
+        $data = 'M';
+        @endphp
+        <label for="exampleInputPassword1">Keterangan</label>
+        <br>
+        <input type="radio" name="status" value="M" {{ $data === 'M' ? 'checked' : '' }}> Masuk
+        <input type="radio" name="status" value="A" {{ $data === 'A' ? 'checked' : '' }}> Alpa
+        <input type="radio" name="status" value="I" {{ $data === 'I' ? 'checked' : '' }}> Izin
+        <input type="radio" name="status" value="S" {{ $data === 'S' ? 'checked' : '' }}> Sakit
     </div>
     <br>
     <br>

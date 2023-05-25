@@ -29,6 +29,7 @@ Dashboard Kehadiran
                 <th scope="col">Nama</th>
                 <th scope="col">Jam Masuk</th>
                 <th scope="col">Jam Keluar</th>
+                <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
@@ -39,6 +40,7 @@ Dashboard Kehadiran
                 <td scope="col">{{ $kehadiran->user->name }}</td>
                 <td scope="col">{{ $kehadiran->jam_masuk }}</td>
                 <td scope="col">{{ $kehadiran->jam_keluar }}</td>
+                <td scope="col">{{ ($kehadiran->status == 'M' ? 'Masuk' : ($kehadiran->status=='I' ? 'Izin' : ($kehadiran->status=='A' ?'Alpha' : 'Sakit' )))}} </td>
                 <td>
                     <div class="input-group mb-3">
                         <span class="input-group-text border-0"> <a href="{{route('kehadiran.edit', $kehadiran->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Edit</a>

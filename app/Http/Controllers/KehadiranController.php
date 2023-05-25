@@ -24,7 +24,7 @@ class KehadiranController extends Controller
         $fetchUser = $user->get();
         return view('admin.kehadiran.editForm', compact('fetchUser', 'kehadiran'));
     }
-    public function saveJabatan(Kehadiran $kehadiran, Request $kehadiranRequest)
+    public function saveKehadiran(Kehadiran $kehadiran, Request $kehadiranRequest)
     {
         $data = $kehadiranRequest->all();
         //dd($data);
