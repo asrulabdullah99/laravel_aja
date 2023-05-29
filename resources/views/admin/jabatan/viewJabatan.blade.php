@@ -27,6 +27,7 @@ Dashboard Jabatan
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Email</th>
                 <th scope="col">Jabatan</th>
                 <th scope="col">Tunjangan (Ribu Rupiah)</th>
                 <th scope="col">Aksi</th>
@@ -37,6 +38,7 @@ Dashboard Jabatan
             <tr>
                 <td scope="col">{{ ++$index }}</td>
                 <td scope="col">{{ $jabatan->user->name }}</td>
+                <td scope="col">{{ $jabatan->user->email }}</td>
                 <td scope="col">{{ $jabatan->nama_jabatan }}</td>
                 <td scope="col">{{ $jabatan->tunjangan }}</td>
                 <td>

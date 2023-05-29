@@ -2,6 +2,7 @@
 @section('title')
 Dashboard Kehadiran
 @endsection
+
 @extends('components.sidebar')
 
 @section('konten')

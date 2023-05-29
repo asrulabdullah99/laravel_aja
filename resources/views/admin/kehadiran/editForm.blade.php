@@ -2,83 +2,7 @@
 @section('title')
 Tambah Data
 @endsection
-@section('sidebar')
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
-    <div class="position-sticky pt-3 sidebar-sticky">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/dashboard-admin">
-                    <span data-feather="home" class="align-text-bottom"></span>
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file" class="align-text-bottom"></span>
-                    Orders
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Products
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/user">
-                    <span data-feather="users" class="align-text-bottom"></span>
-                    Customers
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="layers" class="align-text-bottom"></span>
-                    Integrations
-                </a>
-            </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-                <span data-feather="plus-circle" class="align-text-bottom"></span>
-            </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Current month
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Last quarter
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Social engagement
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Year-end sale
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-@endsection
+@extends('components.sidebar')
 @section('konten')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Dashboard Kehadiran</h1>
@@ -95,24 +19,38 @@ Tambah Data
     </div>
 </div>
 <div>
-    <h4>Form Edit User</h4>
+    <h4>Form Edit Kehadiran</h4>
 </div>
 <form action="{{route('kehadiran.updateKehadiran',$kehadiran->id)}}" method="POST">
     @csrf
     @method('patch')
     <div class="form-group">
         <label for="exampleInputEmail1">Nama Pengguna</label>
-        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name" value="{{ old('name') ?? $kehadiran->user_id}}">
+        <select class="form-select" name='user_id' aria-label="Default select example">
+            <option value="">Pilih Nama</option>
+            @foreach($fetchUser as $user)
+            <option value="{{$user->id}}">{{ $user->name }}</option>
+            @endforeach
+        </select>
         <small id="emailHelp" class="form-text text-muted">example : Asrul Abdullah.</small>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Alamat Email</label>
-        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') ?? $kehadiran->jam_masuk}}">
-        <small id="emailHelp" class="form-text text-muted">ex. asrul.abdullah@unmuhpnk.ac.id.</small>
+        <label for="exampleInputEmail1">Jam Masuk</label>
+        <input type="datetime-local" name="jam_masuk" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ now()->setTimezone('T')->format('Y-m-dTh:m') }}">
+        <small id="emailHelp" class="form-text text-muted">example : Kaprodi</small>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{ old('password') ?? $kehadiran->jam_keluar}}">
+        <label for="exampleInputPassword1">Jam Keluar</label>
+        <input type="datetime-local" name="jam_keluar" class="form-control" id="exampleInputPassword1" placeholder="Enter jam keluar">
+        <small id="emailHelp" class="form-text text-muted">example : 1000</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Keterangan</label>
+        <br>
+        <input type="radio" name="status" value="M" {{ $kehadiran->status === 'M' ? 'checked' : '' }}> Masuk
+        <input type="radio" name="status" value="A" {{ $kehadiran->status === 'A' ? 'checked' : '' }}> Alpa
+        <input type="radio" name="status" value="I" {{ $kehadiran->status === 'I' ? 'checked' : '' }}> Izin
+        <input type="radio" name="status" value="S" {{ $kehadiran->status === 'S' ? 'checked' : '' }}> Sakit
     </div>
     <br>
     <br>
