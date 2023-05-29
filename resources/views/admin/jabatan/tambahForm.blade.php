@@ -29,7 +29,7 @@ Tambah Data
         <select class="form-select" name='user_id' aria-label="Default select example">
             <option value="">Pilih Nama</option>
             @foreach($fetchUser as $user)
-            <option value="{{$user->id}}">{{ $user->name }}</option>
+            <option value="{{$user->id}}">{{ $user->id.$user->name }}</option>
             @endforeach
         </select>
         <small id="emailHelp" class="form-text text-muted">example : Asrul Abdullah.</small>

@@ -25,7 +25,7 @@ Tambah Data
     @csrf
     <div class="form-group">
         <label for="exampleInputEmail1">Nama Pengguna</label>
-        <select class="form-select" name='user_id' aria-label="Default select example">
+        <select class="js-example-basic-single" name='user_id' aria-label="Default select example">
             <option value="">Pilih Nama</option>
             @foreach($fetchUser as $user)
             <option value="{{$user->id}}">{{ $user->name }}</option>
