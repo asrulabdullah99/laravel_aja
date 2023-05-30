@@ -10,7 +10,9 @@ class JabatanController extends Controller
 {
     public function getJabatan(Jabatan $jabatan)
     {
-        $dataJabatan = $jabatan->paginate(10);
+        // $id = auth()->user()->id;
+        // $dataJabatan = $jabatan->where('user_id', $id)->get();
+        $dataJabatan = $jabatan->get();
 
         return view('admin.jabatan.viewJabatan', compact('dataJabatan'));
     }
