@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\KehadiranController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\KehadiranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,12 @@ Route::get('/admin', function () {
     return view('admin/dashboard_admin');
 });
 
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
+Route::get('registration', [AuthController::class, 'registration'])->name('register');
+Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post');
+Route::get('dashboard', [AuthController::class, 'dashboard']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::controller(UserController::class)->name('user.')->group(function () {
     Route::get('/user/view', 'getUser')->name('getUser');
