@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -17,10 +18,18 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10) . '@gmail.com',
-            'password' => Hash::make('password'),
+        User::create([
+            "name" => "One",
+            "email" => "one@gmail.com",
+            "password" => Hash::make("123456"),
+            "is_active" => 1
+        ]);
+
+        User::create([
+            "name" => "Two",
+            "email" => "two@gmail.com",
+            "password" => Hash::make("123456"),
+            "is_active" => 0
         ]);
     }
 }
