@@ -181,9 +181,9 @@
         <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                @auth
-                <a class="nav-link px-3" href="{{ route('logout') }}">Sign out {{ auth()->user()->name }}</a>
-                @endauth
+
+                <a class="nav-link px-3" href="{{ route('logout') }}">Sign out @auth{{ auth()->user()->name }}@endauth</a>
+
             </div>
         </div>
     </header>
