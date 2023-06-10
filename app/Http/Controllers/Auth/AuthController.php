@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -43,7 +44,13 @@ class AuthController extends Controller
             return redirect()->intended('dashboard')
                 ->withSuccess('You have Successfully loggedin');
         }
-        return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
+        //return redirect("login")->withErrors('Oppes! You have entered invalid credentials');
+        return Redirect::back()->withErrors(
+            [
+                'email' => 'Maaf, email yang anda masukkan salah',
+                'password' => 'Maaf, password yang anda masukkan salah'
+            ]
+        );
     }
 
     /**
