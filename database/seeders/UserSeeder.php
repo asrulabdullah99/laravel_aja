@@ -22,14 +22,14 @@ class UserSeeder extends Seeder
             "name" => "One",
             "email" => "one@gmail.com",
             "password" => Hash::make("123456"),
-            "is_active" => 1
+            "role" => 'admin'
         ]);
 
         User::create([
             "name" => "Two",
             "email" => "two@gmail.com",
             "password" => Hash::make("123456"),
-            "is_active" => 0
+            "role" => 'mahasiswa'
         ]);
     }
 }

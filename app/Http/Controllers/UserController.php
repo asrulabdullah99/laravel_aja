@@ -10,7 +10,7 @@ class UserController extends Controller
 
     public function getUser(User $user)
     {
-        $dataUser = $user->paginate(10);
+        $dataUser = $user->get();
         // $dataUser = $user->where('id', auth()->user()->id)->get();
         return view('admin.user.viewUser', compact('dataUser'));
     }

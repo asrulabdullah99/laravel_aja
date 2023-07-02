@@ -52,7 +52,6 @@ class AuthController extends Controller
             ]
         );
     }
-
     /**
      * Write code on Method
      *
@@ -79,8 +78,14 @@ class AuthController extends Controller
      */
     public function dashboard()
     {
-        if (Auth::check()) {
-            return view('admin/dashboard_admin');
+        $user_id = auth()->user()->id;
+        $role = User::where('id', $user_id)->value('role');
+        // dd($role);
+
+        if ($role == 'admin') {
+            return view('admin.dashboard_admin');
+        } else if ($role == 'mahasiswa') {
+            return view('admin.dashboard_mhs');
         }
 
         return redirect("login")->withSuccess('Opps! You do not have access');
