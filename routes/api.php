@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +17,16 @@ use Illuminate\Validation\ValidationException;
 */
 
 
+
+
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $request->user();
+    Route::controller(UserController::class)->name('user.')->group(function () {
+        Route::get('/user/view', 'getUser')->name('getUser');
+        Route::get('/user/tambah', 'tambah')->name('tambah');
+        Route::get('/user/edit/{user}', 'edit')->name('edit');
+        Route::post('/user/simpan', 'saveUser')->name('saveUser');
+        Route::patch('/user/update/{user}', 'updateUser')->name('updateUser');
+        Route::delete('/user/hapus/{user}', 'deleteUser')->name('deleteUser');
     });
 });
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
