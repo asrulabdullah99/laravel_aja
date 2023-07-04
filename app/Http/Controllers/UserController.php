@@ -31,12 +31,14 @@ class UserController extends Controller
         //dd($data);
         $data['password'] = bcrypt($userRequest->password);
         $user->create($data);
-        return redirect(route('user.getUser'))->with('success', 'Data user berhasil ditambahkan');
+        // return redirect(route('user.getUser'))->with('success', 'Data user berhasil ditambahkan');
+        return response()->json('data berhasil disimpan');
     }
     public function deleteUser(User $user)
     {
         $user->delete();
-        return back()->with(['success' => 'Data berhasil dihapus']);
+        // return back()->with(['success' => 'Data berhasil dihapus']);
+        return response()->json('data berhasil dihapus');
     }
     public function updateUser(User $user, Request $userRequest)
     {
@@ -46,6 +48,7 @@ class UserController extends Controller
             $data['password'] = bcrypt($userRequest->password);
         }
         $user->update($data);
-        return redirect(route('user.getUser'))->with('success', 'Data user berhasil diubah');
+        //return redirect(route('user.getUser'))->with('success', 'Data user berhasil diubah');
+        return response()->json('data berhasil diubah');
     }
 }
